@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> Processing Charges - Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+</head>
+<body>
+	<div class="has-padding-bottom-100" >
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;padding-top: 50px'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>Processing Fees</p>
+			</div>
+		</div>
+		<div class='container has-margin-top-50'>
+			<div class='columns'>
+				<div class='column is-9'>
+					<section class="has-padding-20 is-block has-background-white">
+						<div>
+							<p class="is-size-3 is-size-4-mobile">Processing Fees</p><br>
+
+							<p>
+								{% if journal_fees %}
+								<table class="table is-fullwidth is-hoverable">
+									<thead class="has-background-dark">
+										<tr>
+											<th class="has-text-white">Journal Name</th>
+											<th class="has-text-white">Fee(USD)</th>
+											<th class="has-text-white">Fee(INR)</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for fee in journal_fees %}
+										<tr>
+											<td> {{fee.journal}}</td>
+											<td> {{fee.usd}} &#36;</td>
+											<td> {{fee.inr}} Dinar;</td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+								{% else %}
+								<p class="has-text-danger">No entries added yet, kindly contact through email..</p>
+								{% endif %}
+							</p>
+						</div>
+					</section>
+				</div>
+				<div class='column'>
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'index/footer.html' %}
+</body>
+</html>

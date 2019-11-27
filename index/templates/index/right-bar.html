@@ -1,0 +1,31 @@
+{% load static %}
+<div class='container'>
+	<div class='title-head'>
+		<p class='has-text-centered title-container'>Journals by Titles</p>
+	</div>
+	<div class='container has-padding-10'>
+		{% for journal in journals %}
+		<a href="{% url  'journal_details' url=journal.journal_url %}" class='hvr-forward'>
+			<i class='fa fa-arrow-alt-circle-right'></i>&nbsp;{{ journal.journal_name }}
+		</a><br>
+		{% endfor %}
+	</div>
+</div>
+
+<!--subject area-->
+<div class='container'>
+	<div class='title-head has-padding-10'>
+		<p class='has-text-centered title-container'>Browse By Subjects</p>
+	</div>
+	{% if journals %}
+	<div class='container has-padding-10'>
+		{% for journal in journals %}
+		<a href="{% url  'journal_details' url=journal.journal_url %}" class='hvr-forward'>
+			<i class='fa fa-arrow-alt-circle-right'></i>&nbsp;{{journal.subject}}
+		</a><br>
+		{% endfor %}
+	</div>
+	{% else %}
+	<p class="has-text-danger">No journals yet</p>
+	{% endif %}
+</div>

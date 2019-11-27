@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ journal.journal_name }} | {{volume_name}}-{{issue_name}} |  Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+	<style>
+		.banner{
+			background-image:url( {{journal.journal_cover.url}} );
+			background-size:cover;
+			background-position:fixed;
+			border-radius:7px;
+			height: 30em;
+			box-shadow: 2px 2px 10px #333;
+		}
+		.banner-name{
+			background-color: rgba(0,0,0,0.5);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="has-padding-bottom-100" >
+		<!--Header-->
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>{{ journal.journal_name }} | {{volume_name}}-{{issue_name}}</p>
+			</div>
+		</div>
+
+		<!--Journal Banner-->
+		<div class="banner">
+		</div>
+
+		<!--Main Content-->
+		<section class="container has-margin-top-50">
+			<div class="columns is-variable">
+				<!--Main Block-->
+				<div class="column is-9">
+					<!--Recent articles-->
+					<div class="has-padding-20 has-margin-top-20 is-block has-background-white">
+						<p class="is-size-3 is-size-4-mobile has-text-grey">{{volume_name}}-{{issue_name}}</p>
+						<!--articles-->
+						<div class="container" >
+							{% include 'index/articles-template.html' %}
+						</div>
+					</div>
+				</div>
+
+				<!--Right Bar-->
+				<div class="column has-margin-top-10">
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</section>
+	</div>		
+
+	{% include 'index/footer.html' %}
+
+	<script type="text/javascript">
+		function openTab(evt, tabName) {
+			var i, x, tablinks;
+			x = document.getElementsByClassName("content-tab");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " is-active";
+		}
+	</script>
+</body>
+</html>

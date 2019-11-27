@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact Us - Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+</head>
+<body>
+	<div class='has-padding-bottom-100'>
+		{% include 'index/header.html' %}
+		<div>
+			<img src='{% static "media/contactus-banner.jpg" %}' style='width:100% !important'>
+		</div>
+		<div>
+			<p class='has-margin-top-30 has-margin-bottom-30 is-size-1 has-text-centered' style='font-weight:700'>Our Offices</p>
+			<div class='container'>
+				<div class='columns'>
+					<div class='column has-padding-20' >
+						<div class='container has-padding-20  journal-card' style='background-color: #c8d6e5'>
+							<figure class='image '>
+								<img class='is-rounded' src='{% static "media/dubai.jpg" %}' style='max-width: 50%;margin:auto'>
+							</figure>
+							<br><br>
+							<p class='has-text-dark has-text-centered '  style='font-weight: 700'>
+								<span class='is-size-3'>DUBAI</span><br><br>
+
+								<strong>Mohammed Masud Hussain</strong>,<br>
+								CEO, Scholars Middle East Publishers<br>
+								Address: Scholars Middle East Publishers,<br>
+								Gold Souk, Deira, d – 24 D85, <br>
+								Dubai, United Arab Emirates<br><br>
+
+								<i class='fab fa-whatsapp'></i>&nbsp;+971-54-717-2569<br>
+								<i class='fa fa-envelope'></i>&nbsp;scholarsmepub@gmail.com
+							</p>
+						</div>
+					</div>
+					<div class='column has-padding-20'>
+						<div class='container has-padding-20  journal-card'  style='background-color: #ff9f43'>
+							<figure class='image'>
+								<img class='is-rounded' src='{% static "media/india.jpg" %}' style='max-width: 50%;margin:auto'>
+							</figure>
+							<br><br>
+							<p class='has-text-light has-text-centered' style='font-weight: 700'>
+								<span class='is-size-3'>INDIA</span><br><br>
+								SAS Office, H.No-204, Borhawor, P.S-Murajhar,<br>
+								Dist - Hojai, Pin - 782435<br>
+								Assam, India<br><br>
+
+
+								<i class='fa fa-phone'></i>&nbsp;03674-267245<br>
+								<i class='fa fa-phone'></i>&nbsp;+91-8724002629, +91-9014252992<br>
+								<i class='fab fa-whatsapp'></i>&nbsp;+91-8724002629<br>
+								<i class='fa fa-envelope'></i>&nbsp;saspjournals@gmail.com 
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'index/footer.html' %}
+</body>
+</html>

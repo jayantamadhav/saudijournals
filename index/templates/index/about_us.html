@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>About Us - Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+</head>
+
+<body>
+	<div class="has-padding-bottom-100" >
+		{% include 'index/header.html' %}
+		<div>
+			<img src='{% static "media/aboutus-banner.jpg" %}' style='width:100% !important'>
+		</div>
+		<!--Main Content-->
+		<div class='container  has-margin-top-50'>
+			<div class='columns'>
+				<div class='column is-3'>
+					{% include 'index/right-bar.html' %}
+				</div>
+				<div class='column'>
+					<section class="has-padding-40 is-block has-background-white">
+						<div class="container" >
+							<figure class='image has-margin-bottom-40'>
+								<img src='{% static "media/mainLogo.png" %}' style='margin: auto;max-width: 400px'>
+							</figure>
+							<div class="container is-size-5">
+								<p>Scholars Middle East Publishers is an international publisher for open access scientific journals in both online and printed versions from Dubai, UAE. Its aim is to serve for the scholars and researchers all over the world by means of fast publishing and to get widest exposure by providing free access. Scholars Middle East Publishers team works with full dedication to improve the services and to maintain high quality standards.
+								</p>
+							</div><br><br>
+							<p class=''>
+								<strong>Our office</strong><br>
+
+								Gold Souk, Deira, d – 24 D85, <br>
+								Dubai, United Arab Emirates
+							</p><br><br>
+							<p>
+								<strong>Contact Person</strong><br>
+
+								Mohammed Masud Hussain,<br>
+
+								CEO, Scholars Middle East Publishers,<br>
+
+								Gold Souk, Deira, d – 24 D85,<br>
+
+								Dubai, United Arab Emirates<br>
+
+								Tel: +971-55-542-5366<br>
+							</p>
+						</div>
+					</section>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--FOOTER-->
+{% include 'index/footer.html' %}
+</body>
+</html>

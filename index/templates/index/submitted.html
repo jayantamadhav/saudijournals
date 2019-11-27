@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Thank You</title>
+	{% include 'index/includes.html' %}
+</head>
+<body>
+	<div class="has-margin-bottom-100" style='height:100vh' >
+		<!--HEADER-->
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;padding-top: 50px'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>Submission Received</p>
+			</div>
+		</div>
+
+		<div class='container is-block has-background-light  has-padding-50 has-margin-top-50'>
+			<p class='is-size-4'>
+				<span class='is-size-2'>Thank you</span> for submitting the manuscript,<br>
+				We have received the request and its under evaluation.
+			</p>
+			<br><br><br><br><br>
+			<p class='has-text-danger is-size-6'>Redirecting to home...</p>
+		</div>
+
+	</div>
+	<script>
+		var delay = 5000; 
+		setTimeout(function(){ window.location = '{% url "index" %}'; }, delay);
+	</script>
+</body>
+</html>

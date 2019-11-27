@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Manuscript Submission -  Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+</head>
+<body>
+	<div class="has-padding-bottom-100" >
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;padding-top: 50px'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>Manuscript Submission</p>
+			</div>
+		</div>
+		<div class='container has-margin-top-50'>
+			<div class='columns'>
+				<div class='column is-9'>
+					<section class="container	">
+						<form id='manuscript-form' enctype="multipart/form-data" method='post'>
+							{% csrf_token %}
+							<p class="has-text-danger is-size-4">Authors may also submit their manuscript by email to <strong>sarpublication@gmail.com</strong></p><br>
+							<p  class="is-size-4 is-size-5-mobile"> Personal Details</p><br>
+							<div class="columns is-variable">
+								<div class="column">
+									<div class="field is-fullwidth">
+										<div class="control is-fullwidth">
+											<div class="columns is-variable">
+												<div class="column is-2">
+													<div class="select is-fullwidth">
+														<select required=true name='title'>
+															<option selected disabled>Select title</option>
+															<option> Dr. </option>
+															<option> Prof </option>
+															<option> Mr. </option>
+															<option> Ms. </option>
+															<option> Mrs. </option>
+															<option> Miss </option>
+														</select>
+													</div>
+												</div>
+												<div class="column">
+													<div class="control">
+														<input name='first' class="input" type="text" placeholder="First Name" required=true>
+													</div>
+												</div>
+												<div class="column">
+													<div class="control">
+														<input name='last' class="input" type="text" placeholder="Last Name" required=true>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="control">
+										<input name='university' class="input" type="text" placeholder="University" required=true>
+									</div><br>
+									<div class="control">
+										<textarea name='address' class="textarea" type="textarea" placeholder="Address" required=true></textarea>
+									</div><br>
+									<div class="columns is-variable">
+										<div class="column">
+											<div class="control">
+												<input name='email' class="input" type="email" placeholder="Email" required=true>
+											</div>
+										</div>
+										<div class="column">
+											<div class="control">
+												<input name='phone' class="input" type="text" placeholder="Phone Number" required=true>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><br>
+
+							<p class="is-size-4 is-size-5-mobile"> Document Details</p><br>
+							<div class="columns is-variable">
+								<div class="column">
+									<div class="field is-fullwidth">
+										<div class="control is-fullwidth">
+											<div class="select is-fullwidth">
+												<select name='journal' required=true>
+													<option selected disabled>Select Journal</option>
+													{% if journals %}
+													{% for journal in journals %}
+													<option>{{ journal.journal_name}}</option>
+													{% endfor %}
+													{% else %}
+													<option disabled>No Journals Added</option>
+													{% endif %}
+												</select>
+											</div>
+										</div><br>
+										<div class="control">
+											<div class="select is-fullwidth">
+												<select name='article-type' required=true>
+													<option selected disabled>Select article type</option>
+													<option> Research Article </option>
+													<option> Review Article </option>
+													<option> Case Report </option>
+													<option> Letter to Editor </option>
+													<option> Short Article </option>
+													<option> Others </option>
+												</select>
+											</div>
+										</div><br>
+										<div class="control is-fullwidth">
+											<input name='manuscript-title' class="input" type="text" placeholder="Manuscript Title" required=true>
+										</div><br>
+										<div class="control">
+											<textarea name='abstract' class="textarea" type="textarea" placeholder="Insert Abstract" required=true></textarea>
+										</div><br>
+										<div >
+											<button name='file' class='button is-link'><input type='file' name='file' required=true>| Choose a File to upload
+											</button>
+										</div>
+										<div class="controll is-pulled-right">
+											<button id="submit-manuscript" class="button is-outlined is-primary" type='submit'>Submit Manuscript</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</section>
+				</div>
+				<div class='column'>
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'index/footer.html' %}
+</body>
+</html>

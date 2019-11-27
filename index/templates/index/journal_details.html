@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>{{ journal.journal_name }} - Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+	<style>
+		.banner{
+			background-image:url( {{journal.journal_cover.url}} );
+			background-size:cover;
+			background-position:fixed;
+			border-radius:7px;
+			height: 30em;
+			box-shadow: 2px 2px 10px #333;
+		}
+		.banner-name{
+			background-color: rgba(0,0,0,0.5);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="has-padding-bottom-100" >
+		<!--Header-->
+		{% include 'index/header.html' %}
+		<div style='background-color: #353b48;'>
+			<div class='container'>
+				<p class='has-text-light is-size-2' style='border-bottom:5px solid #e67e22'>{{ journal.journal_name }}</p>
+			</div>
+		</div>
+
+		<!--Journal Banner-->
+		<div class="banner">
+		</div>
+
+		<!--Main Content-->
+		<div class='container has-margin-top-50'>
+			<div class="columns">
+				<!--Left Column-->
+				<div class="column is-9">
+					<!--Tabs-->
+					<div class="is-block has-background-white">
+						<div class="tabs is-toggle is-fullwidth is-size-5 is-size-6-mobile">
+							<ul>
+								<li class="tab is-active" onclick="openTab(event,'1')"><a>Details</a></li>
+								<li class="tab" onclick="openTab(event,'2')"><a >Journal Description</a></li>
+								<li class="tab" onclick="openTab(event,'3')"><a >Editorial Board</a></li>
+								<li class="tab" onclick="openTab(event,'4')"><a >Archives</a></li>
+								<li class="tab" onclick="openTab(event,'5')"><a >Indexing &amp; Impact Factor</a></li>
+							</ul>
+						</div>
+
+						<div class="container is-fluid has-padding-20">
+
+
+							<!--Details tab-->
+							<div id="1" class="content-tab is-active">
+								<p>
+									<table>
+										<tr >
+											<th class="has-text-right">Journal Name:</th>
+											<td class="has-text-left"> &nbsp; {{journal.journal_name}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Abbr. Title:</th>
+											<td class="has-text-left"> &nbsp; {{journal.abbr_title}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">ISSN(Print):</th>
+											<td class="has-text-left"> &nbsp; {{journal.issn_print}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">ISSN(Online):</th>
+											<td class="has-text-left"> &nbsp; {{journal.issn_online}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Frequency:</th>
+											<td class="has-text-left"> &nbsp; {{journal.frequency}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Language:</th>
+											<td class="has-text-left"> &nbsp; {{journal.language}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Chief Editor:</th>
+											<td class="has-text-left"> &nbsp; {{journal.chief_editor}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Publisher:</th>
+											<td class="has-text-left"> &nbsp; {{journal.publisher}}</td>
+										</tr>
+										<tr >
+											<th class="has-text-right">Country of Origin:</th>
+											<td class="has-text-left"> &nbsp; {{journal.origin_country}}</td>
+										</tr>
+									</table>
+								</p>
+							</div>
+
+							<!--Description tab-->
+							<div id="2" class="content-tab"  style="display:none"	>
+								<p>
+									<span class='is-size-3'>About Journal</span><br>
+									{{ journal.journal_info}}<br><br>
+									<span class='is-size-3'>Scope of Journal</span><br>
+									{{ journal.journal_scope}}<br><br>
+								</p>
+							</div>
+
+							<!--Editorial Board tab-->
+							<div id="3" class="content-tab" style="display:none;overflow:auto;">
+								<p>	
+									{% if editors %}
+									<table>
+										{% for editor in editors %}
+										<tr >
+											<th class="has-text-right">{{editor.designation}}: &nbsp;</th>
+											<td class="has-text-left">{{editor.editor_name}}<br>
+												{{editor.editor_info}}
+											</td>
+										</tr>
+										{% endfor %}
+									</table>
+									{% else %}
+									<p class="has-text-danger">No entries yet, but soon..</p>
+									{% endif%}
+								</p>
+
+							</div>
+
+							<!--Archive tab-->
+							<div id="4" class="content-tab" style="display:none">
+								{% if volumes %}
+								{% regroup volumes|dictsortreversed:"volume_year" by volume_year as volume_year_list %}
+
+								<ul>
+									{% for volume_year in volume_year_list %}
+									<li><p class="is-size-5 is-size-6-mobile">{{ volume_year.grouper }}</p>
+										<ul>
+											{% for volume in volume_year.list %}
+											<a href="{% url 'volume_articles' url=journal.journal_url vol=volume issue=volume.issue_name%}" target="_blank">
+												<button class="button is-danger is-outlined">{{volume}} {{volume.issue_name}}</button>
+											</a>
+											{% endfor %}
+										</ul>
+									</li><br>
+									{% endfor %}
+								</ul>
+								{% else %}
+								<p class="has-text-danger">No volumes added yet</p>
+								{% endif %}
+							</div>
+
+							<!--Indexing and Impact Factor-->
+							<div id="5" class="content-tab" style="display:none">
+								<div class='has-padding-30'>
+									<p class='has-text-danger is-size-4 is-size-5-mobile'>
+										Under Evaluation
+									</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Recent articles-->
+					<div class="has-padding-20 has-margin-top-20 is-block has-background-white" >
+						<p class="is-size-3 is-size-4-mobile has-text-grey">Latest Articles</p>
+						<!--articles-->
+						{% include 'index/articles-template.html' %}
+					</div>
+				</div>
+
+				<!--Right Column-->
+				<div class="column">
+					{% include 'index/right-bar.html' %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include 'index/footer.html' %}
+	<script type="text/javascript">
+		function openTab(evt, tabName) {
+			var i, x, tablinks;
+			x = document.getElementsByClassName("content-tab");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tab");
+			for (i = 0; i < x.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " is-active";
+		} 
+		$(document).ready(function(){
+			var carousels = bulmaCarousel.attach('.carousel', {
+				slidesToScroll: 1,
+				slidesToShow: 4,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				pagination: false,
+				infinite: true,
+				breakpoints: [{ 
+					changePoint: 480, 
+					slidesToShow: 1, 
+					slidesToScroll: 1 
+				}, { 
+					changePoint: 640, 
+					slidesToShow: 2, 
+					slidesToScroll: 2 
+				}, { 
+					changePoint: 768, 
+					slidesToShow: 3, 
+					slidesToScroll: 1 
+				}, {
+					changePoint: 1280, 
+					slidesToShow: 3, 
+					slidesToScroll: 1 
+				} ]
+			});
+		});
+	</script>
+</body>
+</html>

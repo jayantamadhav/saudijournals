@@ -1,0 +1,96 @@
+{% load static %}
+<div class="header">
+	<div class='has-padding-top-30 has-padding-bottom-30  is-hidden-touch'>
+		<div class='level container'>
+			<div class='level-left'>
+				<a href='{% url "index" %}'>
+					<figure>
+						<img src='{% static "media/mainLogo.png" %}' style='max-height: 100px'>
+					</figure>
+				</a>
+			</div>
+			<div class='level-right'>
+				<p class='is-size-5'>
+					<div class='columns is-mobile'>
+						<div class='column is-2'>
+							<i class='fab fa-whatsapp fa-2x' style='color:#2ecc71;'></i>
+						</div>
+						<div class='column'>
+							&nbsp;+971-54-717-2569<span class='has-margin-right-20'></span>
+						</div>
+					</div>
+					<div class='columns is-mobile'>
+						<div class='column is-2'>
+							<i class='fa fa-envelope fa-2x' style='color:#e74c3c;'></i>
+						</div>
+						<div class='column'>
+							&nbsp;scholarsmepub@gmail.com
+						</div>
+					</div>
+				</p>
+			</div>
+		</div>
+	</div>
+	<section class="navbar-container">
+		<nav class="navbar container has-padding-left-20 has-padding-right-20" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand is-hidden-desktop">
+				<a class="navbar-item" href="{% url 'index' %}">
+					<figure class="image" style="height:75;width:100px">
+						<img src="{% static 'media/mainLogo.png' %}">
+					</figure>
+				</a>
+
+				<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+
+			<div id="navbarBasicExample" class="navbar-menu">
+				<div class="navbar-start">
+					<a class="navbar-item is-size-5 has-text-light hvr-sweep-to-bottom " href="{% url 'index' %}">
+						Home
+					</a>
+
+					<a class="navbar-item is-size-5 has-text-light hvr-sweep-to-bottom " href="{% url 'about_us' %}">
+						About Us
+					</a>
+					<a class="navbar-item is-size-5 has-text-light hvr-sweep-to-bottom " href="{% url 'journals' %}">
+						Journals
+					</a>
+					<a class="navbar-item is-size-5 has-text-light hvr-sweep-to-bottom " href="{% url 'author_guidelines' %}">
+						Author Instructions
+					</a>
+					<!--
+					<div class="navbar-item has-text-white has-dropdown is-hoverable" >
+						<a class="navbar-item is-size-5 has-text-white  hvr-sweep-to-bottom ">
+							For Authors &nbsp;<i class='fa fa-chevron-down'></i>
+						</a>
+
+						<div class="navbar-dropdown ">
+							<a class="navbar-item " href="{% url 'author_guidelines' %}">
+								Guidelines
+							</a>
+
+							<a class="navbar-item " href="{% url 'publication_ethics' %}">
+								Publication Ethics
+							</a>
+
+							<a class="navbar-item" href="{% url 'processing_fees' %}">
+								Processing Fee
+							</a>
+						</div>
+					</div>-->
+					<a class="navbar-item is-size-5 has-text-light hvr-sweep-to-bottom " href="{% url 'contact_us' %}">
+						Contact Us
+					</a>
+
+
+				</div>
+
+				<div class="navbar-end"></div>
+			</div>
+		</nav>
+	</section>
+</div>

@@ -1,0 +1,135 @@
+{% load static %}
+{% load template_next %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Scholars Middle East Publishers</title>
+	{% include 'index/includes.html' %}
+</head>
+<body>
+	<div class='has-padding-bottom-50'>
+
+		{% include 'index/header.html' 	%}
+		<!--BANNER-->
+		<div>
+			<div style='background-image: url({% static "media/banner.jpg" %});background-size: cover;height: 50vh'>
+				<div class='columns is-mobile' style='padding-top:10%;'>
+					<div class='column'>
+						<p class='has-text-centered has-text-light is-size-5'>
+							<i class='fa fa-newspaper fa-2x'>
+							</i>
+							<br><br>
+							<span class='count'>30000</span>+
+							<br>
+							<span style='color:#feca57;'>
+								Article Submissions
+							</span>
+						</p>
+					</div>
+					<div class='column is-hidden-touch'>
+						<p class='has-text-centered has-text-light is-size-5'>
+							<i class='fa fa-file fa-2x'>
+							</i>
+							<br><br>
+							<span class='count'>17000</span>+
+							<br>
+							<span style='color:#feca57;'>
+								Published Articles
+							</span>
+						</p>
+					</div>
+					<div class='column'>
+						<p class='has-text-centered has-text-light is-size-5'>
+							<i class='fa fa-download fa-2x'>
+							</i>
+							<br><br>
+							<span class='count'>200000</span>+
+							<br>
+							<span style='color:#feca57;'>
+								Articles Downloaded
+							</span>
+						</p>
+					</div>
+					<div class='column is-hidden-touch'>
+						<p class='has-text-centered has-text-light is-size-5'>
+							<i class='fa fa-book-reader fa-2x'>
+							</i>
+							<br><br>
+							<span class='count'>10000</span>+
+							<br>
+							<span style='color:#feca57;'>
+								Authors
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--Main Content-->
+		<div class='container has-margin-top-20'>
+			<div class='columns' >
+
+				<!--Journals-->
+				<div class='column is-3'>
+					{% include 'index/right-bar.html' %}
+				</div>
+				
+				<!--Our Journals-->
+				<div class='column is-9'>
+
+					<!--Journal Slide-->
+					<div class='container'>
+						{% if journals %}
+						<div class='journal-carousel'>
+							{% for journal in journals %}
+							<div class='has-margin-right-20'>
+								<figure class="image">
+									<a href="{% url  'journal_details' url=journal.journal_url %}">
+										<img src = "{{ journal.journal_thumb.url }}">
+									</a>
+								</figure>
+							</div>
+							{% endfor %}
+						</div>
+						{% else %}
+						<p class="has-text-danger"></p>
+						{% endif %}
+					</div>
+
+					<!--Latest Articles-->
+					<div class='container has-margin-top-20'>
+						<div class='title-head'>
+							<p class='has-text-centered title-container'>Latest Published Articles</p>
+						</div>
+						<div class='container'>
+							{% include 'index/articles-template.html' %}
+						</div>
+					</div>
+				</div>
+			</div> 
+		</div>
+
+		<div class='is-block has-background-white has-margin-top-50'>
+			<div class='container has-padding-20'>
+				<p class='has-text-centered is-size-2' style='font-weight: 700;color:#353b48'>Our Major Indexing Services</p>
+				{% if global_indexing %}
+				<div class='global-indexing-container has-margin-top-50'>
+					{% for index in global_indexing %}
+					<div>
+						<figure class='image'>
+							<img src='{{ index.index_picture.url }}' style='max-height:150px; max-width: 200px'>
+						</figure>
+					</div>
+					{% endfor %}
+				</div>
+				{% else %}
+				<p class=''>No data fount</p>
+				{% endif %}
+			</div>
+		</div>
+		
+	</div>
+	{% include 'index/footer.html' %}
+</body>
+</html>

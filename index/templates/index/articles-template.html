@@ -1,0 +1,23 @@
+{% if featured_articles %}
+{% for article in featured_articles %}
+<div class='container has-margin-top-10 has-padding-20' style='border-bottom: 2px solid #2c3e50'>
+	<div class="level">
+		<div class="level-left">
+			<p><div class="article-type-button hvr-grow-shadow">{{article.article_type}}</div></p>
+		</div>
+		<div class="level-right">
+			<strong>{{ article.publish_date }}</strong>
+		</div>
+	</div>
+	<p style='font-weight: 600;color:#2c3e50;'>{{ article.article_name}}</p>
+	<p><i class="fa fa-user"></i>&nbsp; {{ article.author }}</p>
+	<p><i class="fa fa-book"></i>&nbsp; {{ article.article_journal }} | {{article.page_nos}}</p>
+	<p><i class="fa fa-external-link-alt"></i>&nbsp; <span style='font-weight:600'>DOI :</span> {{ article.doi }}</p><br>
+	<a href='{{article.article.url}}' download>
+		<button class='article-button hvr-bounce-in' ><i class='fa fa-download'></i> &nbsp;Download PDF</button>
+	</a>
+</div>
+{% endfor %}
+{% else %}
+<p class="has-text-danger">No Articles Added yet</p>
+{% endif %}
